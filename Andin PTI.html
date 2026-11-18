@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titik Hujan Terakhir</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #101c2c, #263c50, #101820);
+            font-family: Georgia, serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .rain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .drop {
+            position: absolute;
+            top: -20px;
+            width: 2px;
+            height: 15px;
+            background: rgba(173, 216, 230, 0.6);
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 85%;
+            max-width: 650px;
+            padding: 45px 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: muncul 2s ease;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 35px;
+            color: #b9dce9;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #b6c6d2;
+            font-size: 14px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .poem {
+            line-height: 2;
+            font-size: 17px;
+            color: #f0f4f7;
+        }
+
+        .poem p {
+            margin-bottom: 18px;
+        }
+
+        .author {
+            margin-top: 30px;
+            color: #9ebdca;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .line {
+            width: 60px;
+            height: 2px;
+            background: #9ebdca;
+            margin: 20px auto;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 27px;
+            }
+
+            .poem {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="rain" id="rain"></div>
+
+    <div class="container">
+        <h1>Titik Hujan Terakhir</h1>
+
+        <div class="subtitle">
+            "Tentang kenangan yang enggan mengering"
+        </div>
+
+        <div class="line"></div>
+
+        <div class="poem">
+            <p>
+                Di balik jendela yang mulai sunyi,<br>
+                hujan menyimpan cerita hari ini.<br>
+                Tentang langkah yang pernah bersama,<br>
+                dan perpisahan tanpa banyak kata.
+            </p>
+
+            <p>
+                Satu demi satu titiknya jatuh,<br>
+                membawa rindu yang kian rapuh.<br>
+                Langit pun perlahan kembali terang,<br>
+                namun kenangan tetap tinggal seorang.
+            </p>
+
+            <p>
+                Hingga titik hujan terakhir menyentuh bumi,<br>
+                aku masih berdiri memeluk sepi.<br>
+                Sebab tak semua yang pergi akan kembali,<br>
+                dan tak semua luka mampu terobati.
+            </p>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="author">
+            — Sebuah kisah dalam rintik hujan —
+        </div>
+    </div>
+
+    <script>
+        // Membuat animasi titik hujan
+        const rain = document.getElementById("rain");
+
+        for (let i = 0; i < 70; i++) {
+            const drop = document.createElement("div");
+
+            drop.classList.add("drop");
+
+            drop.style.left = Math.random() * 100 + "%";
+            drop.style.animationDuration =
+                (Math.random() * 2 + 1) + "s";
+
+            drop.style.animationDelay =
+                Math.random() * 3 + "s";
+
+            rain.appendChild(drop);
+        }
+    </script>
+
+</body>
+</html>
